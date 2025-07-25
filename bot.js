@@ -75,13 +75,18 @@ const RSS_FEEDS = [
   'https://www.faz.net/rss/aktuell/',
   'https://rss.dw.com/rdf/rss-de-all',
   'https://newsfeed.zeit.de/index',
-  'https://www.welt.de/feeds/latest.rss'
+  'https://www.welt.de/feeds/latest.rss',
+
+  // magyar
+  'https://index.hu/24ora/rss/',
+  'https://mandiner.hu/rss'
 ];
 
 const KEYWORDS = [
   // magyar és angol
   'orban', 'viktor orban', 'hungary', 'tusnad', 'băile tușnad',
   'speech', 'illiberal', 'tusvanyos', 'orbán viktor', 'tusványos',
+  'hungarikum', 'magyarság', 'miniszterelnök', 'tusnádfürdő',
 
   // orosz
   'орбан', 'виктор орбан', 'венгрия', 'тушнад', 'тушваниош', 'нелиберальный', 'речь',
@@ -100,7 +105,7 @@ function sleep(ms) {
 
 function formatLink(title, link) {
   const cleanLink = link.replace(/https?:\/\/[^\/]+\//, '');
-  return `📰 <b>${title}</b>\n<a href=\"${link}\">${cleanLink}</a>`;
+  return `📰 <b>${title}</b>\n<a href="${link}">${cleanLink}</a>`;
 }
 
 async function checkFeeds() {
@@ -120,11 +125,14 @@ async function checkFeeds() {
 
         if (match && !sentLinks.has(link)) {
           const message = formatLink(title, link);
-          await bot.sendMessage(CHAT_ID, message, { parse_mode: 'HTML', disable_web_page_preview: false });
+          await bot.sendMessage(CHAT_ID, message, {
+            parse_mode: 'HTML',
+            disable_web_page_preview: false
+          });
           console.log(`[${now()}] 🔔 Sent: ${title}`);
           sentLinks.add(link);
           saveSentLinks();
-          await sleep(3000);
+          await sleep(3000); // rate limit delay
         }
       }
 
@@ -134,6 +142,7 @@ async function checkFeeds() {
   }
 }
 
+// ▶️ Start
 loadSentLinks();
 checkFeeds();
 setInterval(checkFeeds, 60 * 1000);
