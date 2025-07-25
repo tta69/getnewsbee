@@ -18,7 +18,7 @@ const RSS_FEEDS = [
 ];
 
 // 🔍 Kulcsszavak szűréshez
-const KEYWORDS = ['Orban', 'Viktor Orban', 'Hungary', 'Tusnad', 'Băile Tușnad', 'speech', 'illiberal'];
+const KEYWORDS = ['Orban', 'Viktor Orban', 'Hungary', 'Tusnad', 'Băile Tușnad', 'speech', 'illiberal', 'tusvanyos', 'Orbán Viktor', 'tusványos' ];
 
 // 🔁 Emlékezzen, miket küldött már (Railway újraindítás után törlődik)
 let sentLinks = new Set();
