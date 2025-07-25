@@ -61,6 +61,6 @@ async function checkFeeds() {
 // ▶️ Indításkor egyszer
 checkFeeds();
 
-// ⏱️ Majd 3 percenként újra
-setInterval(checkFeeds, 3 * 60 * 1000);
+// ⏱️ Majd 1 percenként újra
+setInterval(checkFeeds, 1 * 60 * 1000);
 
