@@ -6,7 +6,6 @@ const parser = new Parser();
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: false });
 
 const CHAT_ID = process.env.CHAT_ID;
-bot.sendMessage(CHAT_ID, '✅ Tesztüzenet a Tusnádfürdő botból.');
 
 
 // ✅ Jól működő és biztonságos RSS források
@@ -63,5 +62,6 @@ async function checkFeeds() {
 // ▶️ Indításkor egyszer
 checkFeeds();
 
-// ⏱️ Majd 10 percenként újra
+// ⏱️ Majd 1 percenként újra
 setInterval(checkFeeds, 1 * 60 * 1000);
+bot.sendMessage(CHAT_ID, '✅ Tesztüzenet a Tusnádfürdő botból.');
