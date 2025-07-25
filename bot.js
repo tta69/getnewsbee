@@ -48,7 +48,6 @@ const RSS_FEEDS = [
   'https://www.ukrinform.ua/rss',
   'https://24tv.ua/rss/all.xml',
   'https://nv.ua/ukr/rss/all.xml',
-  'https://www.unian.ua/static/rss_all.xml',
 
   // orosz
   'https://ria.ru/export/rss2/archive/index.xml',
@@ -67,7 +66,6 @@ const RSS_FEEDS = [
   // olasz
   'https://www.ansa.it/sito/ansait_rss.xml',
   'https://www.repubblica.it/rss/homepage/rss2.0.xml',
-  'https://www.ilsole24ore.com/rss/notizie.xml',
   'https://www.ilgiornale.it/rss.xml',
   'https://www.corriere.it/rss/homepage.xml',
 
