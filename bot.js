@@ -64,4 +64,4 @@ checkFeeds();
 
 // ⏱️ Majd 1 percenként újra
 setInterval(checkFeeds, 1 * 60 * 1000);
-bot.sendMessage(CHAT_ID, '✅ Tesztüzenet a Tusnádfürdő botból.');
+
