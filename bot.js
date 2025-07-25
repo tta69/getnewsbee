@@ -10,7 +10,6 @@ const CHAT_ID = process.env.CHAT_ID;
 const LINKS_FILE = 'sent_links.json';
 let sentLinks = new Set();
 
-// 📥 Betölti a fájlból az előzőleg küldött linkeket
 function loadSentLinks() {
   if (fs.existsSync(LINKS_FILE)) {
     try {
@@ -24,7 +23,6 @@ function loadSentLinks() {
   }
 }
 
-// 💾 Elmenti az aktuális linklistát
 function saveSentLinks() {
   try {
     fs.writeFileSync(LINKS_FILE, JSON.stringify([...sentLinks]), 'utf8');
@@ -39,10 +37,6 @@ const RSS_FEEDS = [
   'https://www.politico.eu/feed/',
   'http://feeds.bbci.co.uk/news/world/rss.xml',
   'https://rss.dw.com/rdf/rss-en-all',
-  'https://news.google.com/rss/search?q=Viktor+Orban',
-  'https://news.google.com/rss/search?q=Orban+Viktor',
-  'https://news.google.com/rss/search?q=Tusnadfurdo',
-  'https://news.google.com/rss/search?q=Hungary+speech+Orban',
   'https://feeds.npr.org/1004/rss.xml',
   'https://rss.nytimes.com/services/xml/rss/nyt/World.xml',
   'https://www.theguardian.com/world/rss',
@@ -54,12 +48,11 @@ const RSS_FEEDS = [
   'https://www.ukrinform.ua/rss',
   'https://24tv.ua/rss/all.xml',
   'https://nv.ua/ukr/rss/all.xml',
-  'https://rss.unian.net/site/news_ukr.rss',
+  'https://www.unian.ua/static/rss_all.xml',
 
   // orosz
   'https://ria.ru/export/rss2/archive/index.xml',
   'https://tass.com/rss/v2.xml',
-  'https://www.kommersant.ru/RSS/news.xml',
   'https://lenta.ru/rss',
   'https://rssexport.rbc.ru/rbcnews/news/30/full.rss',
 
@@ -89,16 +82,15 @@ const RSS_FEEDS = [
 
 const KEYWORDS = [
   // magyar és angol
-  'Orban', 'Viktor Orban', 'Hungary', 'Tusnad', 'Băile Tușnad',
-  'speech', 'illiberal', 'tusvanyos', 'Orbán Viktor', 'tusványos',
+  'orban', 'viktor orban', 'hungary', 'tusnad', 'băile tușnad',
+  'speech', 'illiberal', 'tusvanyos', 'orbán viktor', 'tusványos',
 
   // orosz
-  'Орбан', 'Виктор Орбан', 'Венгрия', 'Тушнад', 'Тушваниош', 'нелиберальный', 'речь',
+  'орбан', 'виктор орбан', 'венгрия', 'тушнад', 'тушваниош', 'нелиберальный', 'речь',
 
   // ukrán
-  'Орбан', 'Віктор Орбан', 'Угорщина', 'Тушнад', 'Тушваньош', 'неліберальний', 'виступ'
+  'орбан', 'віктор орбан', 'угорщина', 'тушнад', 'тушваньош', 'неліберальний', 'виступ'
 ];
-
 
 function now() {
   return new Date().toISOString();
@@ -120,9 +112,8 @@ async function checkFeeds() {
         const link = item.link || '';
         const content = item.contentSnippet || '';
 
-        const match = KEYWORDS.some(keyword =>
-          (title + content).toLowerCase().includes(keyword.toLowerCase())
-        );
+        const text = (title + content).toLowerCase();
+        const match = KEYWORDS.some(keyword => text.includes(keyword.toLowerCase()));
 
         if (match && !sentLinks.has(link)) {
           const message = `📰 *${title}*\n${link}`;
@@ -130,7 +121,7 @@ async function checkFeeds() {
           console.log(`[${now()}] 🔔 Sent: ${title}`);
           sentLinks.add(link);
           saveSentLinks();
-          await sleep(1500); // szünet a túl sok üzenet elkerüléséhez
+          await sleep(3000); // lassítás a Telegram rate limit miatt
         }
       }
 
@@ -140,7 +131,6 @@ async function checkFeeds() {
   }
 }
 
-// ▶️ Futtatás
 loadSentLinks();
 checkFeeds();
-setInterval(checkFeeds, 1 * 60 * 1000);
+setInterval(checkFeeds, 60 * 1000); // 1 percenként újra
