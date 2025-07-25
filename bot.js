@@ -6,6 +6,8 @@ const parser = new Parser();
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: false });
 
 const CHAT_ID = process.env.CHAT_ID;
+bot.sendMessage(CHAT_ID, '✅ Tesztüzenet a Tusnádfürdő botból.');
+
 
 // ✅ Jól működő és biztonságos RSS források
 const RSS_FEEDS = [
