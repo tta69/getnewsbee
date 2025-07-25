@@ -56,6 +56,7 @@ const RSS_FEEDS = [
   'https://www.ukrinform.ua/rss',
   'https://24tv.ua/rss/all.xml',
   'https://nv.ua/ukr/rss/all.xml',
+  'https://kyivindependent.com/news-archive/',
 
   // orosz
   'https://ria.ru/export/rss2/archive/index.xml',
