@@ -64,4 +64,4 @@ async function checkFeeds() {
 checkFeeds();
 
 // ⏱️ Majd 10 percenként újra
-setInterval(checkFeeds, 10 * 60 * 1000);
+setInterval(checkFeeds, 1 * 60 * 1000);
