@@ -9,12 +9,10 @@ const CHAT_ID = process.env.CHAT_ID;
 
 // ✅ Jól működő és biztonságos RSS források
 const RSS_FEEDS = [
-  'https://www.reutersagency.com/feed/?best-sectors=politics&post_type=best',
   'https://www.politico.eu/feed/',
   'http://feeds.bbci.co.uk/news/world/rss.xml',
   'https://rss.dw.com/rdf/rss-en-all',
-  'https://news.google.com/rss/search?q=Viktor+Orban',
-  'https://magyarnemzet.hu/publicapi/hu/rss/magyar_nemzet/articles'
+  'https://news.google.com/rss/search?q=Viktor+Orban'
 ];
 
 // 🔍 Kulcsszavak szűréshez
