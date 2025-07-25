@@ -100,6 +100,11 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function formatLink(title, link) {
+  const cleanLink = link.replace(/https?:\/\/[^\/]+\//, '');
+  return `📰 <b>${title}</b>\n<a href=\"${link}\">${cleanLink}</a>`;
+}
+
 async function checkFeeds() {
   console.log(`[${now()}] 🔎 Checking RSS feeds...`);
 
@@ -116,12 +121,12 @@ async function checkFeeds() {
         const match = KEYWORDS.some(keyword => text.includes(keyword.toLowerCase()));
 
         if (match && !sentLinks.has(link)) {
-          const message = `📰 *${title}*\n${link}`;
-          await bot.sendMessage(CHAT_ID, message, { parse_mode: 'Markdown' });
+          const message = formatLink(title, link);
+          await bot.sendMessage(CHAT_ID, message, { parse_mode: 'HTML', disable_web_page_preview: false });
           console.log(`[${now()}] 🔔 Sent: ${title}`);
           sentLinks.add(link);
           saveSentLinks();
-          await sleep(3000); // lassítás a Telegram rate limit miatt
+          await sleep(3000);
         }
       }
 
@@ -133,4 +138,4 @@ async function checkFeeds() {
 
 loadSentLinks();
 checkFeeds();
-setInterval(checkFeeds, 60 * 1000); // 1 percenként újra
+setInterval(checkFeeds, 60 * 1000);
