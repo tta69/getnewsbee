@@ -6,9 +6,6 @@ const parser = new Parser();
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: false });
 
 const CHAT_ID = process.env.CHAT_ID;
-bot.on('message', (msg) => {
-  console.log('👉 CHAT ID:', msg.chat.id);
-});
 
 // ✅ Jól működő és biztonságos RSS források
 const RSS_FEEDS = [
