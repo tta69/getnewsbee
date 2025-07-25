@@ -8,6 +8,7 @@ const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: false });
 const CHAT_ID = process.env.CHAT_ID;
 
 const RSS_FEEDS = [
+  // angol
   'https://www.politico.eu/feed/',
   'http://feeds.bbci.co.uk/news/world/rss.xml',
   'https://rss.dw.com/rdf/rss-en-all',
@@ -20,20 +21,21 @@ const RSS_FEEDS = [
   'https://www.theguardian.com/world/rss',
   'https://www.aljazeera.com/xml/rss/all.xml',
   'https://www.ft.com/?format=rss',
-  'https://news.google.com/rss/search?q=Viktor+Orban',
-  
+
   // ukrán
   'https://www.pravda.com.ua/rss/',
   'https://www.ukrinform.ua/rss',
   'https://24tv.ua/rss/all.xml',
   'https://nv.ua/ukr/rss/all.xml',
   'https://www.unian.ua/static/rss_all.xml',
+
   // orosz
   'https://ria.ru/export/rss2/politics/index.xml',
   'https://tass.com/rss/v2.xml',
   'https://www.kommersant.ru/RSS/news.xml',
   'https://lenta.ru/rss',
   'https://www.rbc.ru/static/rss/news.rus.rss.xml',
+
   // francia
   'https://www.lemonde.fr/rss/une.xml',
   'https://www.lefigaro.fr/rss/figaro_actualites.xml',
@@ -41,12 +43,14 @@ const RSS_FEEDS = [
   'https://www.france24.com/fr/rss',
   'https://www.liberation.fr/rss/latest/',
   'https://www.rfi.fr/fr/rss',
+
   // olasz
   'https://www.ansa.it/sito/ansait_rss.xml',
   'https://www.repubblica.it/rss/homepage/rss2.0.xml',
   'https://www.ilsole24ore.com/rss',
   'https://www.ilgiornale.it/rss.xml',
   'https://www.corriere.it/rss/homepage.xml',
+
   // német
   'https://www.spiegel.de/international/index.rss',
   'https://www.tagesschau.de/xml/rss2',
@@ -55,6 +59,7 @@ const RSS_FEEDS = [
   'https://www.zeit.de/index',
   'https://www.welt.de/feeds/latest.rss'
 ];
+
 
 const KEYWORDS = [
   'Orban', 'Viktor Orban', 'Hungary', 'Tusnad', 'Băile Tușnad',
