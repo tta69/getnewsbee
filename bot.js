@@ -6,23 +6,28 @@ const parser = new Parser();
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: false });
 
 const CHAT_ID = process.env.CHAT_ID;
+
+// ✅ Jól működő és biztonságos RSS források
 const RSS_FEEDS = [
-  'https://feeds.reuters.com/reuters/worldNews',
+  'https://www.reutersagency.com/feed/?best-sectors=politics&post_type=best',
   'https://www.politico.eu/feed/',
   'http://feeds.bbci.co.uk/news/world/rss.xml',
-  'https://www.dw.com/en/top-stories/s-9097?maca=en-rss-en-all-1573-rdf'
+  'https://rss.dw.com/rdf/rss-en-all',
+  'https://news.google.com/rss/search?q=Viktor+Orban'
 ];
 
+// 🔍 Kulcsszavak szűréshez
 const KEYWORDS = ['Orban', 'Viktor Orban', 'Hungary', 'Tusnad', 'Băile Tușnad', 'speech', 'illiberal'];
 
-// Egyszerű memória alapú cache (Railway újraindításkor törlődik)
+// 🔁 Emlékezzen, miket küldött már (Railway újraindítás után törlődik)
 let sentLinks = new Set();
 
-// Utility: időbélyeg loghoz
+// 🕒 Segéd: ISO időbélyeg a logokhoz
 function now() {
   return new Date().toISOString();
 }
 
+// 📰 Hírek figyelése
 async function checkFeeds() {
   console.log(`[${now()}] Checking RSS feeds...`);
 
@@ -53,8 +58,8 @@ async function checkFeeds() {
   }
 }
 
-// Első futáskor azonnal lefut
+// ▶️ Indításkor egyszer
 checkFeeds();
 
-// 10 percenként ismétli
+// ⏱️ Majd 10 percenként újra
 setInterval(checkFeeds, 10 * 60 * 1000);
