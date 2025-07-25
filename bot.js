@@ -12,9 +12,8 @@ const RSS_FEEDS = [
   'https://www.politico.eu/feed/',
   'http://feeds.bbci.co.uk/news/world/rss.xml',
   'https://rss.dw.com/rdf/rss-en-all',
-  'https://news.google.com/rss/search?q=Viktor+Orban'
+  'https://news.google.com/rss/search?q=Viktor+Orban',
   'https://news.google.com/rss/search?q=tusnadfurdo'
-
 ];
 
 // 🔍 Kulcsszavak szűréshez
