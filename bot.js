@@ -7,7 +7,6 @@ const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: false });
 
 const CHAT_ID = process.env.CHAT_ID;
 
-// ✅ Jól működő és biztonságos RSS források
 const RSS_FEEDS = [
   'https://www.politico.eu/feed/',
   'http://feeds.bbci.co.uk/news/world/rss.xml',
@@ -16,26 +15,29 @@ const RSS_FEEDS = [
   'https://news.google.com/rss/search?q=tusnadfurdo'
 ];
 
-// 🔍 Kulcsszavak szűréshez
-const KEYWORDS = ['Orban', 'Viktor Orban', 'Hungary', 'Tusnad', 'Băile Tușnad', 'speech', 'illiberal', 'tusvanyos', 'Orbán Viktor', 'tusványos' ];
+const KEYWORDS = [
+  'Orban', 'Viktor Orban', 'Hungary', 'Tusnad', 'Băile Tușnad',
+  'speech', 'illiberal', 'tusvanyos', 'Orbán Viktor', 'tusványos'
+];
 
-// 🔁 Emlékezzen, miket küldött már (Railway újraindítás után törlődik)
 let sentLinks = new Set();
 
-// 🕒 Segéd: ISO időbélyeg a logokhoz
 function now() {
   return new Date().toISOString();
 }
 
-// 📰 Hírek figyelése
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function checkFeeds() {
-  console.log(`[${now()}] Checking RSS feeds...`);
+  console.log(`[${now()}] 🔎 Checking RSS feeds...`);
 
   for (const feedUrl of RSS_FEEDS) {
     try {
       const feed = await parser.parseURL(feedUrl);
 
-      feed.items.forEach(item => {
+      for (const item of feed.items) {
         const title = item.title || '';
         const link = item.link || '';
         const content = item.contentSnippet || '';
@@ -46,11 +48,12 @@ async function checkFeeds() {
 
         if (match && !sentLinks.has(link)) {
           const message = `📰 *${title}*\n${link}`;
-          bot.sendMessage(CHAT_ID, message, { parse_mode: 'Markdown' });
+          await bot.sendMessage(CHAT_ID, message, { parse_mode: 'Markdown' });
           console.log(`[${now()}] 🔔 Sent: ${title}`);
           sentLinks.add(link);
+          await sleep(1500); // 1.5 másodperc szünet
         }
-      });
+      }
 
     } catch (err) {
       console.error(`[${now()}] ❌ Error at ${feedUrl}: ${err.message}`);
@@ -58,9 +61,5 @@ async function checkFeeds() {
   }
 }
 
-// ▶️ Indításkor egyszer
 checkFeeds();
-
-// ⏱️ Majd 1 percenként újra
-setInterval(checkFeeds, 1 * 60 * 1000);
-
+setInterval(checkFeeds, 1 * 60 * 1000); // 1 percenként
