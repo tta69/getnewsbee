@@ -1,3 +1,40 @@
+name: Clean RSS Feeds
+
+on:
+  push:
+    paths:
+      - '**.js'
+  schedule:
+    - cron: '0 3 * * *' # minden nap hajnali 3:00 UTC
+  workflow_dispatch:
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Kód klónozása
+        uses: actions/checkout@v3
+
+      - name: 🔧 Node.js környezet
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: 📦 rss-parser telepítése
+        run: npm install rss-parser
+
+      - name: 🧪 check_and_clean_feeds.js futtatása
+        run: node check_and_clean_feeds.js
+
+      - name: 📤 Commit & push ha változott valami
+        run: |
+          git config --global user.name "rss-bot"
+          git config --global user.email "rss-bot@example.com"
+          git add rss_feeds.js
+          git diff --cached --quiet || git commit -m "♻️ RSS feed lista automatikus tisztítása"
+          git push
+
+
 const RSS_FEEDS = [
 
   // 🌐 Angol nyelvű hírek
