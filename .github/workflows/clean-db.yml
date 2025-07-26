@@ -1,0 +1,31 @@
+name: Tisztítsd és frissítsd az RSS feedeket az adatbázisban
+
+on:
+  workflow_dispatch:
+
+jobs:
+  clean-and-update-db:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Kódbázis letöltése
+        uses: actions/checkout@v3
+
+      - name: Node.js beállítása
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Függőségek telepítése
+        run: npm install rss-parser sqlite3
+
+      - name: Clean and overwrite RSS feeds in DB
+        run: node validate_and_clean_feeds.js
+
+      - name: Változások commitolása
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add newsbot.sqlite logs/
+          git commit -m "RSS feedek tisztítva és adatbázis frissítve"
+          git push
