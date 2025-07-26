@@ -20,7 +20,7 @@ jobs:
         run: npm install sqlite3
 
       - name: Run keyword table init script
-        run: node init_keywords_table.js
+        run: node init_keywords_db.js
 
       - name: Commit updated database
         run: |
