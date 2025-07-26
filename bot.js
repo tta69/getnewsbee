@@ -67,9 +67,10 @@ function sleep(ms) {
 }
 
 // 🖋️ HTML üzenet formázása Telegramra
-function formatLink(title, link) {
-  const cleanLink = link.replace(/https?:\/\/[^\/]+\//, '');
-  return `📰 <b>${title}</b>\n<a href="${link}">${cleanLink}</a>`;
+
+function formatLink(title, link, source = '') {
+  const domain = new URL(link).hostname.replace('www.', '');
+  return `📰 <b>${title}</b>\n🌐 <i>${source || domain}</i>\n<a href="${link}">🔗 Olvasd el</a>`;
 }
 
 // 🔁 RSS-csatornák rendszeres ellenőrzése
