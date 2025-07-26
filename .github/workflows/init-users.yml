@@ -1,0 +1,31 @@
+name: Init User DB
+
+on:
+  workflow_dispatch:
+
+jobs:
+  init-user-db:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install SQLite3
+        run: npm install sqlite3
+
+      - name: Run init_user_db.js
+        run: node init_user_db.js
+
+      - name: Commit updated database
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add newsbot.sqlite
+          git commit -m "Initialize user DB with superadmin"
+          git push
