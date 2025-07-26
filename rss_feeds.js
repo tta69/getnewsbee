@@ -1,5 +1,6 @@
-
 const RSS_FEEDS = [
+ 'https://news.google.com/rss/search?q=Viktor+Orban',
+
 
   // 🌐 Angol nyelvű hírek
   'http://feeds.bbci.co.uk/news/world/rss.xml',
