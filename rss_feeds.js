@@ -241,28 +241,16 @@ const RSS_FEEDS = [
   'https://mnemagazin.me/feed/',
   
   // Bulgaria
-  'https://www.dnevnik.bg/rss.php',
-  'https://www.novinite.com/rss.php',
   'https://www.bnr.bg/rss',
-  'https://www.trud.bg/rss/',
-  'https://fakti.bg/rss',
   'https://www.segabg.com/rss',
-  'https://dariknews.bg/rss',
-  'https://nova.bg/rss',
   'https://www.24chasa.bg/rss/',
-  'https://offnews.bg/rss',
 
   // Belgium / Brussels
-  'https://www.brusselstimes.com/feed',
   'https://www.politico.eu/feed/',
   'https://www.euractiv.com/feed/',
   'https://www.europeaninterest.eu/feed/',
-  'https://www.eubusiness.com/news/RSS',
   'https://www.vrt.be/vrtnws/en.rss.articles.xml',
-  'https://www.rtbf.be/info/rss',
   'https://www.lalibre.be/rss',
-  'https://www.lesoir.be/rss',
-  'https://www.deredactie.be/cm/vrtnieuws.net/RSS',
   
   // 🇭🇺 Magyar hírek
   'https://index.hu/24ora/rss/',
