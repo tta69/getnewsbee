@@ -1,0 +1,33 @@
+# .github/workflows/add-tta69-keywords.yml
+
+name: Add tta69 keywords
+
+on:
+  workflow_dispatch:
+
+jobs:
+  add-keywords:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install sqlite3
+
+      - name: Run add_keywords.js
+        run: node add_keywords.js
+
+      - name: Commit updated database
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add newsbot.sqlite
+          git commit -m "Add keywords to tta69"
+          git push
