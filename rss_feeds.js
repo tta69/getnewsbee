@@ -167,13 +167,7 @@ const RSS_FEEDS = [
   'https://www.diepresse.com/feed/rss',
   'https://www.derstandard.at/rss',
   'https://kurier.at/feeds/rss',
-  'https://www.oe24.at/rss',
-  'https://www.tt.com/rss',
-  'https://www.sn.at/rss',
   'https://www.vol.at/feed',
-  'https://orf.at/rss/',
-  'https://www.krone.at/rss',
-  'https://www.nachrichten.at/nachrichten/rss',
 
   // Czech Republic
   'https://www.novinky.cz/rss/',
