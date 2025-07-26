@@ -1,5 +1,5 @@
 const RSS_FEEDS = [
-  'https://www.google.com/search?q=orban+viktor+tusnad+speech+reaction&tbm=nws&output=rss',
+
   // 🌐 Angol nyelvű hírek
   'http://feeds.bbci.co.uk/news/world/rss.xml',
   'http://rss.cnn.com/rss/edition_world.rss',
@@ -36,20 +36,14 @@ const RSS_FEEDS = [
   'https://tsn.ua/rss',
   'https://www.ukrinform.net/rss',
   'https://www.kyivpost.com/feed',
-  'https://kyivindependent.com/feed',
-  'https://suspilne.media/rss/news.xml',
   'https://glavred.info/rss.xml',
   'https://www.liga.net/news/rss.xml',
   'https://espreso.tv/rss',
 
    // Japan
   'https://www3.nhk.or.jp/rss/news/cat0.xml',
-  'https://japantoday.com/category/world/rss',
-  'https://english.kyodonews.net/rss/rss.xml',
   'https://www.japantimes.co.jp/feed/',
-  'https://mainichi.jp/english/rss',
   'https://www.asahi.com/rss/asahi/newsheadlines.rdf',
-  'https://www.nippon.com/en/news/feed/',
   'https://the-japan-news.com/rss/',
   'https://www.japanbullet.com/feed',
   'https://www.japanupdate.com/feed/',
