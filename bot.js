@@ -111,7 +111,7 @@ async function checkFeeds() {
   }
 }
 
-// ▶️ A bot indítása (betölti az elküldött linkeket, majd 1 percenként ellenőriz)
+// ▶️ A bot indítása (betölti az elküldött linkeket, majd 3 percenként ellenőriz)
 loadSentLinks();
 checkFeeds();
-setInterval(checkFeeds, 60 * 1000); // 60 sec = 1 perc
+setInterval(checkFeeds, 3 * 60 * 1000); // 60 sec = 1 perc 
