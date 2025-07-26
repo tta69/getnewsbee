@@ -1,8 +1,12 @@
 const sqlite3 = require('sqlite3').verbose();
+const fs = require('fs');
 const db = new sqlite3.Database('newsbot.sqlite');
 
 db.serialize(() => {
-  db.run(`CREATE TABLE IF NOT EXISTS users (
+  // Ha létezik a users tábla, töröljük
+  db.run('DROP TABLE IF EXISTS users');
+
+  db.run(`CREATE TABLE users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT NOT NULL UNIQUE,
     email TEXT NOT NULL UNIQUE,
@@ -17,7 +21,6 @@ db.serialize(() => {
     last_warning_sent DATETIME
   )`);
 
-  // Létrehozunk egy superadmin felhasználót (tta69)
   db.run(`
     INSERT OR IGNORE INTO users (
       username, email, telegram_id, role, validated,
@@ -26,7 +29,7 @@ db.serialize(() => {
     VALUES (
       'tta69',
       'tta.fiok@gmail.com',
-      '-1002836700611', -- ide majd a valódi Telegram ID-t kell
+      '123456789',
       'superadmin',
       1,
       'unlimited',
@@ -36,7 +39,7 @@ db.serialize(() => {
     )
   `);
 
-  console.log("✅ User táblák létrehozva és superadmin felhasználó beszúrva.");
+  console.log("✅ User táblák újra létrehozva és superadmin felhasználó beszúrva.");
 });
 
 db.close();
