@@ -7,9 +7,9 @@
           if (err) { console.error(err); process.exit(1); }
           console.log('Források száma:', rows[0].count);
         });
-        db.all('SELECT url FROM sources LIMIT 10', (err, rows) => {
+        db.all('SELECT url FROM sources LIMIT 100', (err, rows) => {
           if (err) { console.error(err); process.exit(1); }
-          console.log('Első 10 URL:');
+          console.log('Első 100 URL:');
           rows.forEach(r => console.log(r.url));
         });
         "
