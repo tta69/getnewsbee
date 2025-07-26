@@ -1,0 +1,15 @@
+    - name: Ellenőrizd az adatbázist
+      run: |
+        node -e "
+        const sqlite3 = require('sqlite3').verbose();
+        const db = new sqlite3.Database('newsbot.sqlite');
+        db.all('SELECT COUNT(*) AS count FROM sources', (err, rows) => {
+          if (err) { console.error(err); process.exit(1); }
+          console.log('Források száma:', rows[0].count);
+        });
+        db.all('SELECT url FROM sources LIMIT 10', (err, rows) => {
+          if (err) { console.error(err); process.exit(1); }
+          console.log('Első 10 URL:');
+          rows.forEach(r => console.log(r.url));
+        });
+        "
