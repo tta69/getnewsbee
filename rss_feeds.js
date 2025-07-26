@@ -44,33 +44,17 @@ const RSS_FEEDS = [
   'https://www3.nhk.or.jp/rss/news/cat0.xml',
   'https://www.japantimes.co.jp/feed/',
   'https://www.asahi.com/rss/asahi/newsheadlines.rdf',
-  'https://the-japan-news.com/rss/',
-  'https://www.japanbullet.com/feed',
-  'https://www.japanupdate.com/feed/',
-  
+
   // China
-  'http://www.xinhuanet.com/rss/english.xml',
-  'https://news.cgtn.com/rss/english.xml',
-  'https://www.globaltimes.cn/rss.xml',
   'https://www.chinadaily.com.cn/rss/china_rss.xml',
   'https://www.ecns.cn/rss/rss.xml',
-  'https://english.news.cn/rss/rss_en.xml',
   'https://www.scmp.com/rss/91/feed',
-  'https://www.chinafile.com/rss/all',
   'https://www.whatsonweibo.com/feed/',
-  'https://www.sixthtone.com/rss',
   
   // India
   'https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms',
-  'https://www.hindustantimes.com/feeds/rss/world-news/rssfeed.xml',
-  'https://indianexpress.com/section/world/feed/',
-  'https://www.firstpost.com/world/feed',
   'https://www.thehindu.com/news/international/feeder/default.rss',
-  'https://www.deccanherald.com/rss-feeds',
-  'https://scroll.in/feed',
   'https://www.indiatoday.in/rss/home',
-  'https://www.aninews.in/rss/world-news/',
-  'https://www.outlookindia.com/rss/international',
 
   // Spain
   'https://www.abc.es/rss/feeds/abc_Internacional.xml',
