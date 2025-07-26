@@ -45,15 +45,15 @@ const RSS_FEEDS = require('./rss_feeds');
 // 🧠 Kulcsszavak a releváns cikkek kiszűréséhez
 const KEYWORDS = [
   // magyar és angol
-  'orban', 'viktor orban', 'hungary', 'tusnad', 'băile tușnad',
+  'orban', 'viktor orban', 'tusnad', 'băile tușnad',
   'speech', 'illiberal', 'tusvanyos', 'orbán viktor', 'tusványos',
-  'hungarikum', 'magyarság', 'miniszterelnök', 'tusnádfürdő',
+  'magyarság', 'miniszterelnök', 'tusnádfürdő',
 
   // orosz
-  'орбан', 'виктор орбан', 'венгрия', 'тушнад', 'тушваниош', 'нелиберальный', 'речь',
+  'орбан', 'виктор орбан',
 
   // ukrán
-  'орбан', 'віктор орбан', 'угорщина', 'тушнад', 'тушваньош', 'неліберальний', 'виступ'
+  'орбан', 'віктор орбан'
 ];
 
 // 🕒 Jelenlegi idő formázása (loghoz)
