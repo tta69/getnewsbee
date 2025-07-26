@@ -69,7 +69,6 @@ const RSS_FEEDS = [
    // Israel
   'https://www.jpost.com/Rss/RssFeedsHeadlines.aspx',
   'https://www.israelhayom.com/feed/',
-  'https://www.middleeasteye.net/rss',
   'https://www.al-monitor.com/rss',
   
   // Russia
@@ -135,38 +134,25 @@ const RSS_FEEDS = [
   // United Kingdom
   'https://www.independent.co.uk/news/world/rss',
   'https://www.dailymail.co.uk/news/worldnews/index.rss',
-  'https://news.sky.com/feeds/rss/world.xml',
   'https://metro.co.uk/news/world/feed/',
   'https://www.mirror.co.uk/news/world-news/rss.xml',
 
   // United States
   'https://rss.nytimes.com/services/xml/rss/nyt/World.xml',
   'https://feeds.washingtonpost.com/rss/world',
-  'https://www.wsj.com/xml/rss/3_7085.xml',
   'https://www.npr.org/rss/rss.php?id=1004',
-  'https://www.cnn.com/rss/edition_world.rss',
   'https://feeds.foxnews.com/foxnews/world',
-  'https://www.nbcnews.com/id/3032506/device/rss/rss.xml',
   'https://abcnews.go.com/abcnews/internationalheadlines',
   'https://www.latimes.com/world/rss2.0.xml',
-  'https://www.voanews.com/api/epiqqe$eviqq',
 
   // Poland
   'https://www.tvn24.pl/najnowsze.xml',
   'https://www.rmf24.pl/fakty/polska/feed',
-  'https://www.polskieradio.pl/rss.aspx?id=156',
-  'https://www.gazetaprawna.pl/rss',
   'https://wiadomosci.wp.pl/rss.xml',
-  'https://www.money.pl/rss.xml',
   'https://www.polsatnews.pl/rss/wszystkie.xml',
-  'https://www.dziennik.pl/rss/wydarzenia.xml',
-  'https://www.rp.pl/rss',
-  'https://www.onet.pl/rss.xml',
   
   // Austria
-  'https://www.diepresse.com/feed/rss',
   'https://www.derstandard.at/rss',
-  'https://kurier.at/feeds/rss',
   'https://www.vol.at/feed',
 
   // Czech Republic
