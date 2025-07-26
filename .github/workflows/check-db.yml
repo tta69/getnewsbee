@@ -1,4 +1,4 @@
-    - name: Ellenőrizd az adatbázist
+    name: Ellenőrizd az adatbázist
       run: |
         node -e "
         const sqlite3 = require('sqlite3').verbose();
