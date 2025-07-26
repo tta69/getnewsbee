@@ -1,15 +1,36 @@
-    name: Ellenőrizd az adatbázist
-      run: |
-        node -e "
-        const sqlite3 = require('sqlite3').verbose();
-        const db = new sqlite3.Database('newsbot.sqlite');
-        db.all('SELECT COUNT(*) AS count FROM sources', (err, rows) => {
-          if (err) { console.error(err); process.exit(1); }
-          console.log('Források száma:', rows[0].count);
-        });
-        db.all('SELECT url FROM sources LIMIT 100', (err, rows) => {
-          if (err) { console.error(err); process.exit(1); }
-          console.log('Első 100 URL:');
-          rows.forEach(r => console.log(r.url));
-        });
-        "
+name: Ellenőrizd az adatbázist
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-db:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repo letöltése
+        uses: actions/checkout@v3
+
+      - name: Node.js beállítása
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Függőségek telepítése
+        run: npm install
+
+      - name: Ellenőrizd az adatbázist
+        run: |
+          node -e "
+            const sqlite3 = require('sqlite3').verbose();
+            const db = new sqlite3.Database('newsbot.sqlite');
+            db.all('SELECT COUNT(*) AS count FROM sources', (err, rows) => {
+              if (err) { console.error(err); process.exit(1); }
+              console.log('Források száma:', rows[0].count);
+            });
+            db.all('SELECT url FROM sources LIMIT 10', (err, rows) => {
+              if (err) { console.error(err); process.exit(1); }
+              console.log('Első 10 URL:');
+              rows.forEach(r => console.log(r.url));
+            });
+          "
