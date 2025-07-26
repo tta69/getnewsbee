@@ -1,0 +1,33 @@
+name: Cleanup Unvalidated Users
+
+on:
+  schedule:
+    - cron: '*/10 * * * *' # 10 percenként fut
+  workflow_dispatch:
+
+jobs:
+  cleanup-users:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install SQLite3
+        run: npm install sqlite3
+
+      - name: Run cleanup script
+        run: node validate_users.js
+
+      - name: Commit if DB was changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add newsbot.sqlite
+          git diff --cached --quiet || git commit -m "Auto-delete unvalidated users after 24h"
+          git push
