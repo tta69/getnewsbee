@@ -13,7 +13,6 @@ const RSS_FEEDS = [
   'https://feeds.npr.org/1004/rss.xml',
   'https://feeds.a.dj.com/rss/RSSWorldNews.xml',
   'https://www.france24.com/en/rss',
-  'https://rss.cbc.ca/lineup/world.xml',
   'https://www.latimes.com/world-nation/rss2.0.xml',
   'https://www.channelnewsasia.com/rssfeeds/8395986',
   'https://www.washingtontimes.com/rss/headlines/news/world/',
@@ -114,47 +113,29 @@ const RSS_FEEDS = [
 
   // Iran
   'https://www.tehrantimes.com/rss',
-  'https://en.farsnews.ir/rss',
   'https://www.al-monitor.com/rss',
-  'https://www.isna.ir/rss',
-  'https://financialtribune.com/rss',
   'https://kayhan.ir/fa/rss/allnews',
-  'https://en.abna24.com/rss.xml',
 
   // Brazil
   'https://g1.globo.com/dynamo/rss2.xml',
-  'https://www.uol.com.br/feed/',
-  'https://www.folha.uol.com.br/rss/feed.xml',
-  'https://rss.estadao.com.br/cidades.xml',
   'https://www.cnnbrasil.com.br/rss',
   'https://oglobo.globo.com/rss.xml',
-  'https://www.bbc.com/portuguese/topics/cyx5krnw38vt/index.xml',
   'https://exame.com/feed/',
-  'https://www.correiobraziliense.com.br/rss',
   'https://veja.abril.com.br/rss/',
 
   // Italy
   'https://www.repubblica.it/rss/homepage/rss2.0.xml',
   'https://www.corriere.it/rss/homepage.xml',
-  'https://www.ilsole24ore.com/rss/notizie.xml',
   'https://www.lastampa.it/rss.xml',
   'https://www.ilfattoquotidiano.it/feed/',
-  'https://www.rainews.it/dl/rainews/TGR/basic/RSS.xml',
   'https://www.ansa.it/sito/ansait_rss.xml',
   'https://www.tgcom24.mediaset.it/rss/homepage.xml',
-  'https://www.avvenire.it/rss/attualita.xml',
-  'https://www.huffingtonpost.it/rss.xml',
   'https://www.ilgiornale.it/rss.xml',
 
   // United Kingdom
-  'https://www.bbc.co.uk/news/10628494',
-  'https://rss.theguardian.com/world/rss',
-  'https://www.telegraph.co.uk/news/worldnews/rss.xml',
   'https://www.independent.co.uk/news/world/rss',
   'https://www.dailymail.co.uk/news/worldnews/index.rss',
-  'https://www.thetimes.co.uk/environment/rss',
   'https://news.sky.com/feeds/rss/world.xml',
-  'https://www.express.co.uk/news/world/rss',
   'https://metro.co.uk/news/world/feed/',
   'https://www.mirror.co.uk/news/world-news/rss.xml',
 
