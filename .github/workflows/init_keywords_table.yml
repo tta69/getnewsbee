@@ -1,0 +1,31 @@
+name: Init User Keywords Table
+
+on:
+  workflow_dispatch:
+
+jobs:
+  init-keywords:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install sqlite3
+        run: npm install sqlite3
+
+      - name: Run keyword table init script
+        run: node init_keywords_table.js
+
+      - name: Commit updated database
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add newsbot.sqlite
+          git commit -m "Add user_keywords table"
+          git push
