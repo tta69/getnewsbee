@@ -195,39 +195,19 @@ const RSS_FEEDS = [
   'https://www.nachrichten.at/nachrichten/rss',
 
   // Czech Republic
-  'https://www.idnes.cz/rss.aspx?c=zpravodaj',
   'https://www.novinky.cz/rss/',
-  'https://www.lidovky.cz/rss.aspx?c=zpravy',
   'https://zpravy.aktualne.cz/rss/',
   'https://denikn.cz/feed/',
-  'https://echo24.cz/rss',
   'https://www.parlamentnilisty.cz/export/rss.aspx',
   'https://www.tyden.cz/rss/',
-  'https://www.ceskenoviny.cz/rss/zpravy.xml',
   'https://www.reflex.cz/rss/',
-  
-  // Switzerland
-  'https://www.nzz.ch/rss',
-  'https://www.tagesanzeiger.ch/rss',
-  'https://www.20min.ch/rss/rss.tmpl?type=news',
-  'https://www.swissinfo.ch/service/rss/rss.rdf',
-  'https://www.blick.ch/news/rss.xml',
-  'https://www.derbund.ch/rss',
-  'https://www.letemps.ch/rss',
-  'https://www.rts.ch/tools/rss/',
-  'https://www.laliberte.ch/feed',
-  'https://www.arcinfo.ch/rss',
   
   // Serbia
   'https://www.rts.rs/page/stories/sr/rss.html',
-  'https://www.blic.rs/rss',
-  'https://www.novosti.rs/rss',
   'https://www.danas.rs/feed/',
   'https://www.kurir.rs/rss',
   'https://n1info.rs/feed/',
   'https://www.politika.rs/rss',
-  'https://www.telegraf.rs/rss',
-  'https://rs.n1info.com/rss/svet/',
   'https://nova.rs/feed/',
 
   // Estonia
@@ -237,32 +217,22 @@ const RSS_FEEDS = [
   'https://balticnews.com/feed',
   'https://estonianfreepress.com/feed/',
   'https://www.postimees.ee/rss',
-  'https://epl.delfi.ee/rss',
-  'https://arileht.delfi.ee/rss',
-  'https://maaleht.delfi.ee/rss',
   'https://www.ohtuleht.ee/rss',
   
   // Latvia
   'https://eng.lsm.lv/rss/',
-  'https://www.baltictimes.com/rss/',
-  'https://www.delfi.lv/rss/',
   'https://www.tvnet.lv/rss',
   'https://www.apollo.lv/rss',
-  'https://nra.lv/rss/',
   'https://jauns.lv/rss',
   'https://bnn-news.com/feed',
-  'https://www.la.lv/rss',
   'https://lvportals.lv/rss',
   
   // Lithuania
-  'https://www.lrt.lt/rss/naujienos',
   'https://www.delfi.lt/rss/',
   'https://www.15min.lt/rss',
   'https://www.lrytas.lt/rss',
-  'https://www.alfa.lt/rss',
   'https://kauno.diena.lt/rss',
   'https://klaipeda.diena.lt/rss',
-  'https://www.tv3.lt/rss',
   'https://ve.lt/rss',
   'https://www.vz.lt/rss',
   
