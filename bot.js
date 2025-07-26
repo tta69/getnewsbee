@@ -75,30 +75,32 @@ function formatLink(title, link) {
 // 🔁 RSS-csatornák rendszeres ellenőrzése
 async function checkFeeds() {
   console.log(`[${now()}] 🔎 Checking RSS feeds...`);
+  const tenMinutesAgo = new Date(Date.now() - 10 * 60 * 1000);
 
   for (const feedUrl of RSS_FEEDS) {
     try {
-      const feed = await parser.parseURL(feedUrl); // adott RSS URL feldolgozása
+      const feed = await parser.parseURL(feedUrl);
 
       for (const item of feed.items) {
         const title = item.title || '';
         const link = item.link || '';
         const content = item.contentSnippet || '';
-
-        const text = (title + content).toLowerCase(); // teljes szöveg kulcsszavakra
+        const text = (title + content).toLowerCase();
         const match = KEYWORDS.some(keyword => text.includes(keyword.toLowerCase()));
 
-        // Csak ha van kulcsszavas találat és még nem küldtük el
-        if (match && !sentLinks.has(link)) {
+        const pubDate = new Date(item.pubDate);
+        const isRecent = pubDate.toString() !== 'Invalid Date' && pubDate > tenMinutesAgo;
+
+        if (match && isRecent && !sentLinks.has(link)) {
           const message = formatLink(title, link);
           await bot.sendMessage(CHAT_ID, message, {
             parse_mode: 'HTML',
             disable_web_page_preview: false
           });
           console.log(`[${now()}] 🔔 Sent: ${title}`);
-          sentLinks.add(link); // hozzáadás a listához
-          saveSentLinks();     // fájlba mentés
-          await sleep(3000);   // Telegram limit végett késleltetés
+          sentLinks.add(link);
+          saveSentLinks();
+          await sleep(3000);
         }
       }
 
