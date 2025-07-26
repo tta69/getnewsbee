@@ -1,4 +1,5 @@
 const RSS_FEEDS = [
+  'https://www.google.com/search?q=orban+viktor+tusnad+speech+reaction&tbm=nws&output=rss',
   // 🌐 Angol nyelvű hírek
   'http://feeds.bbci.co.uk/news/world/rss.xml',
   'http://rss.cnn.com/rss/edition_world.rss',
