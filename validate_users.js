@@ -5,18 +5,17 @@ const now = Date.now();
 const cutoff = now - 24 * 60 * 60 * 1000; // 24 óra ezredmásodpercben
 
 db.serialize(() => {
-  console.log('🔍 Validálatlan felhasználók ellenőrzése...');
+  console.log('🧹 Töröljük a 24 órán túl nem validált felhasználókat...');
 
   db.run(
-    `UPDATE users
-     SET validated = 0
+    `DELETE FROM users
      WHERE validated = 0 AND created_at < ?`,
     [cutoff],
     function (err) {
       if (err) {
-        console.error('❌ Hiba a frissítés során:', err.message);
+        console.error('❌ Hiba törlés közben:', err.message);
       } else {
-        console.log(`✅ ${this.changes} felhasználó validációja lejárt és inaktiválva lett.`);
+        console.log(`🗑️ ${this.changes} nem validált felhasználó törölve.`);
       }
     }
   );
