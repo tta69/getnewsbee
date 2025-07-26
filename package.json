@@ -6,17 +6,11 @@
   "scripts": {
     "start": "node bot.js"
   },
+  "license": "MIT",
   "dependencies": {
     "dotenv": "^16.0.0",
     "node-telegram-bot-api": "^0.61.0",
-    "rss-parser": "^3.12.0"
-  },
-  "name": "newsbot",
-  "version": "1.0.0",
-  "main": "init_db.js",
-  "license": "MIT",
-  "dependencies": {
+    "rss-parser": "^3.12.0",
     "sqlite3": "^5.1.6"
   }
-  
 }
