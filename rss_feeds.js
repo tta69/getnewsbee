@@ -411,3 +411,4 @@ const RSS_FEEDS = [
   'https://index.hu/24ora/rss/',
   'https://mandiner.hu/rss'
 ];
+module.exports = RSS_FEEDS;
