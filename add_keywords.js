@@ -10,8 +10,8 @@ const keywords = [
   'orban',
   'victor',
   'viktor orban',
-  'zelesky',
-  'zelenskij',
+  'zelensky',
+  'zelenszkij',
   'oroszorszag'
 ];
 
