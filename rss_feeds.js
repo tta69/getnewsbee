@@ -69,7 +69,6 @@ const RSS_FEEDS = [
 
    // Israel
   'https://www.jpost.com/Rss/RssFeedsHeadlines.aspx',
-  'https://www.timesofisrael.com/feed/',
   'https://www.israelhayom.com/feed/',
   'https://www.middleeasteye.net/rss',
   'https://www.al-monitor.com/rss',
