@@ -1,4 +1,4 @@
-const { registerUser } = require('./lib/registerUser');
+const registerUser = require('./lib/registerUser');
 
 (async () => {
   try {
