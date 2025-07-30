@@ -1,0 +1,22 @@
+name: Teszt regisztráció
+
+on:
+  workflow_dispatch:
+
+jobs:
+  register:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install sqlite3 nodemailer
+
+      - name: Futtasd regisztrációs tesztet
+        run: node test_register.js
