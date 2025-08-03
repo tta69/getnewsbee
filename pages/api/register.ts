@@ -1,55 +1,54 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import sqlite3 from 'sqlite3'
-import { open } from 'sqlite'
-import bcrypt from 'bcrypt'
+import { NextApiRequest, NextApiResponse } from 'next';
+import sqlite3 from 'sqlite3';
+import { open } from 'sqlite';
+import crypto from 'crypto';
+import nodemailer from 'nodemailer';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Csak POST kérés engedélyezett.' })
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { email, username, password } = req.body
+  const { email, username, password } = req.body;
 
-  if (!email || !username || !password) {
-    return res.status(400).json({ error: 'Minden mező kitöltése kötelező.' })
+  const db = await open({ filename: './newsbot.sqlite', driver: sqlite3.Database });
+
+  const existing = await db.get('SELECT id FROM users WHERE email = ?', [email]);
+  if (existing) {
+    return res.status(400).json({ error: 'Ez az e-mail már létezik' });
   }
 
-  try {
-    const db = await open({
-      filename: './newsbot.sqlite',
-      driver: sqlite3.Database,
-    })
+  const activation_token = crypto.randomBytes(32).toString('hex');
+  const activation_expires_at = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
 
-    // Ellenőrzés: van-e már ilyen email vagy felhasználónév
-    const existing = await db.get(
-      'SELECT * FROM users WHERE email = ? OR username = ?',
-      email,
-      username
-    )
+  await db.run(`
+    INSERT INTO users (email, username, password, role, validate, activation_token, activation_expires_at)
+    VALUES (?, ?, ?, 'user', 0, ?, ?)`,
+    [email, username, password, activation_token, activation_expires_at]
+  );
 
-    if (existing) {
-      return res.status(409).json({ error: 'Ez az email vagy felhasználónév már foglalt.' })
+  const activationLink = `https://getnewsbee.com/activate?token=${activation_token}`;
+
+  // Küldünk egy e-mailt aktiváláshoz
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'noreply@getnewsbee.com',
+      pass: process.env.EMAIL_PASSWORD
     }
+  });
 
-    const hashedPassword = await bcrypt.hash(password, 10)
-    const now = new Date()
-    const validateUntil = new Date(now.getTime() + 24 * 60 * 60 * 1000).toISOString() // +24 óra
+  await transporter.sendMail({
+    from: 'GetNewsBee <noreply@getnewsbee.com>',
+    to: email,
+    subject: 'Aktiválja a fiókját',
+    html: `
+      <p>Kedves ${username},</p>
+      <p>Kérjük, aktiválja fiókját 24 órán belül az alábbi linkre kattintva:</p>
+      <a href="${activationLink}">${activationLink}</a>
+      <p>Üdvözlettel,<br>GetNewsBee csapata</p>
+    `
+  });
 
-    await db.run(
-      `INSERT INTO users (email, username, password, role, validated, validate_until, created_at) 
-       VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      email,
-      username,
-      hashedPassword,
-      'user',
-      0,
-      validateUntil,
-      now.toISOString()
-    )
-
-    return res.status(201).json({ message: 'Sikeres regisztráció, kérjük validálja a fiókját!' })
-  } catch (err: any) {
-    console.error('Hiba a regisztráció során:', err)
-    return res.status(500).json({ error: 'Szerverhiba történt.' })
-  }
+  return res.status(200).json({ message: 'Sikeres regisztráció, aktiváló link elküldve' });
 }
