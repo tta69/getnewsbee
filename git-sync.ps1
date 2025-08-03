@@ -1,5 +1,10 @@
 $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 git add .
-git commit -m "sync: $timestamp"
-git push
 
+if (!(git diff --cached --quiet)) {
+    git commit -m "sync: $timestamp"
+    git push
+    Write-Output "Valtozasok feltoltve GitHubra ($timestamp)"
+} else {
+    Write-Output "Nincs valtozas, nincs mit commitolni."
+}
